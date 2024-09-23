@@ -43,7 +43,7 @@ export function App() {
         </div>
       </form>
 
-      <div className="contests">
+      <div className="max-w-lg mx-auto contests">
         <div className="row-field">
           <div className="contest-flex">Contests</div>
           <div className="downloads-flex">Downloads</div>
@@ -60,7 +60,7 @@ export function App() {
           ))
         }
       </div>
-      <div className="pagination">
+      <div className="max-w-lg mx-auto pagination">
         <button type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Prev</button>
         <button type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Next</button>
       </div>
