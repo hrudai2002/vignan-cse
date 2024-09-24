@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { environments } from './../environment';
 import { MdCloudDownload } from "react-icons/md";
 import moment from "moment";
+import { saveAs } from 'file-saver';
 import './App.css'
 
 export function App() {
@@ -27,6 +28,11 @@ export function App() {
     }
     setFilteredData(contestsData.filter((doc: any) => doc.name.toLowerCase().includes(contestName.toLowerCase())));
   }, [contestName])
+
+  const downloadExcel = async (contest: any) => {
+    const res = await axios.get(`${environments.apiUrl}/leetcode-downloads/contest/${contest._id}`, { responseType: 'blob' }); 
+    saveAs(res.data, `${contest.name}.xlsx`);
+  }
 
 
   return (
@@ -55,14 +61,10 @@ export function App() {
                 <div>{doc.name}</div>
                 <div style={{ fontSize: "14px", color: 'grey' }}>{ moment(doc.date).format('DD MMM') }</div>
               </div>
-              <div className="downloads-flex download-btn"><MdCloudDownload color="black" fontSize={28} /></div>
+              <div className="downloads-flex download-btn" onClick={() => downloadExcel(doc)}><MdCloudDownload color="black" fontSize={28} /></div>
             </div>
           ))
         }
-      </div>
-      <div className="max-w-lg mx-auto pagination">
-        <button type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Prev</button>
-        <button type="button" className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">Next</button>
       </div>
     </div>
   )
