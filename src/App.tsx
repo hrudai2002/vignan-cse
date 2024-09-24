@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { environments } from './../environment';
+import { environments } from '../environment';
 import { MdCloudDownload } from "react-icons/md";
 import moment from "moment";
 import { saveAs } from 'file-saver';
